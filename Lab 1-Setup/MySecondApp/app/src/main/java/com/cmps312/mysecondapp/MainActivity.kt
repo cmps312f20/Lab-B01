@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        showbtn.setOnClickListener {
+        showBtn.setOnClickListener {
             val name = nameEdt.text.toString()
             displayTv.text = "Welcome to CMPS 312 Mr . $name"
         }
