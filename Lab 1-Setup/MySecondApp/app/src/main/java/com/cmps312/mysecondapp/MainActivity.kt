@@ -9,6 +9,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        var range = 1..100
+
+        range.forEach(::println)
+        range.reduce { acc, i -> acc + i }
+
+
         showBtn.setOnClickListener {
             val name = nameEdt.text.toString()
             displayTv.text = "Welcome to CMPS 312 Mr . $name"

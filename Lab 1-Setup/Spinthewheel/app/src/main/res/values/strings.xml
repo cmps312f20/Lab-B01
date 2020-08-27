@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Spin the wheel</string>
+    <string name="add_choice">Add Name</string>
+    <string name="todo">TODO</string>
+    <string name="random_spin">Random Spin</string>
+    <string name="add_new_choice">add new name</string>
+</resources>
