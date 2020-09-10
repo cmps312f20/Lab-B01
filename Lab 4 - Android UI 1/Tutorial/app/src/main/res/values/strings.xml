@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Android UI</string>
+    <string name="app_name">Qatar Stadiums</string>
+    <string name="status_construction">Status</string>
+    <string name="stadium_image">Stadium Image</string>
+    <string name="stadium_name">Stadium Name</string>
+    <string name="host_city">Host City</string>
 </resources>

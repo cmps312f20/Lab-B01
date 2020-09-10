@@ -21,11 +21,12 @@
             android:layout_marginLeft="36dp"
             android:layout_marginEnd="27dp"
             android:layout_marginRight="27dp"
+            android:contentDescription="@string/stadium_image"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/textView4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/al_rayan"
-            android:contentDescription="@string/stadium_image" />
+            app:srcCompat="@drawable/al_rayan" />
 
         <TextView
             android:id="@+id/textView4"
