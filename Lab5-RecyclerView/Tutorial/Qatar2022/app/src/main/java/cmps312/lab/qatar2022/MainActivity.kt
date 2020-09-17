@@ -17,20 +17,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         StadiumRepository.initStadiums(this)
-        displayStadium(currentIndex)
+        displayStadium()
 
     }
 
-    fun displayStadium(index: Int) {
-
+    fun displayStadium() {
         StadiumRepository.apply {
             currentIndex = (currentIndex + stadiums.size) % stadiums.size
 
-            nameTv.text = stadiums[index].name
-            statusTv.text = stadiums[index].status
-            cityTv.text = stadiums[index].city
+            nameTv.text = stadiums[currentIndex].name
+            statusTv.text = stadiums[currentIndex].status
+            cityTv.text = stadiums[currentIndex].city
 
-            val imageName = stadiums[index].imageName
+            val imageName = stadiums[currentIndex].imageName
             val imageID = resources.getIdentifier(imageName, "drawable", packageName)
             stadiumIv.setImageResource(imageID)
 
@@ -41,9 +40,10 @@ class MainActivity : AppCompatActivity() {
 
     fun onClick(view: View) {
         when (view.id) {
-            R.id.prevBtn -> displayStadium(currentIndex--)
-            R.id.nextBtn -> displayStadium(currentIndex++)
+            R.id.prevBtn -> currentIndex--
+            R.id.nextBtn -> currentIndex++
         }
+        displayStadium()
     }
 
 }
