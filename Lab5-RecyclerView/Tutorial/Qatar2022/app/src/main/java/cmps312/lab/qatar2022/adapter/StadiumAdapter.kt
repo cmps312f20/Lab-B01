@@ -12,8 +12,8 @@ import kotlinx.android.synthetic.main.list_item_stadium.view.*
 //5 Steps
 
 //Step 2:
-class StadiumActivity(val stadiums : List<Stadium>, val context : Context)
-    : RecyclerView.Adapter<StadiumActivity.StadiumViewHolder>() {
+class StadiumAdapter(val stadiums : List<Stadium>, val context : Context)
+    : RecyclerView.Adapter<StadiumAdapter.StadiumViewHolder>() {
 
     //STEP 1-> Create the view holder
     class StadiumViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
