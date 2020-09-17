@@ -25,14 +25,15 @@ class MainActivity : AppCompatActivity() {
 
         StadiumRepository.apply {
             currentIndex = (currentIndex + stadiums.size) % stadiums.size
+
             nameTv.text = stadiums[index].name
             statusTv.text = stadiums[index].status
             cityTv.text = stadiums[index].city
 
             val imageName = stadiums[index].imageName
             val imageID = resources.getIdentifier(imageName, "drawable", packageName)
-
             stadiumIv.setImageResource(imageID)
+
             currentIndexTv.text = "${currentIndex + 1} of ${stadiums.size}"
         }
 
