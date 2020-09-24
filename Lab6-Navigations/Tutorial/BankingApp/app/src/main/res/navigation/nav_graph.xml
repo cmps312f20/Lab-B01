@@ -7,7 +7,32 @@
 
     <fragment
         android:id="@+id/transactionListFragment"
-        android:name="cmps312.lab.bankingapp.TransactionListFragment"
+        android:name="cmps312.lab.bankingapp.ui.TransactionListFragment"
         android:label="fragment_transaction_list2"
         tools:layout="@layout/fragment_transaction_list2" />
+    <fragment
+        android:id="@+id/transactionDetailsFragment"
+        android:name="cmps312.lab.bankingapp.ui.TransactionDetailsFragment"
+        android:label="fragment_transaction_details2"
+        tools:layout="@layout/fragment_transaction_details2" />
+    <fragment
+        android:id="@+id/accountBalanceFragment"
+        android:name="cmps312.lab.bankingapp.ui.AccountBalanceFragment"
+        android:label="fragment_account_balance2"
+        tools:layout="@layout/fragment_account_balance2" />
+    <fragment
+        android:id="@+id/transferFragment"
+        android:name="cmps312.lab.bankingapp.ui.TransferFragment"
+        android:label="fragment_transfer2"
+        tools:layout="@layout/fragment_transfer2" />
+    <fragment
+        android:id="@+id/selectBeneficiaryFragment"
+        android:name="cmps312.lab.bankingapp.ui.SelectBeneficiaryFragment"
+        android:label="fragment_select_beneficiary2"
+        tools:layout="@layout/fragment_select_beneficiary2" />
+    <fragment
+        android:id="@+id/transferTransferConfirmationFragment"
+        android:name="cmps312.lab.bankingapp.TransferTransferConfirmationFragment"
+        android:label="fragment_transfer_transfer_confirmation"
+        tools:layout="@layout/fragment_transfer_transfer_confirmation" />
 </navigation>
