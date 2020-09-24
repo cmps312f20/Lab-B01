@@ -5,4 +5,7 @@
     <string name="view_transactions">View Transactions</string>
     <string name="send_money">Send Money</string>
     <string name="check_balance">Check Balance</string>
+    <string name="transacations">Transacations</string>
+    <string name="money_transfer">Money Transfer</string>
+    <string name="account_balance">Account Balance</string>
 </resources>

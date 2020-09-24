@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/transactionListFragment"
         android:name="cmps312.lab.bankingapp.ui.TransactionListFragment"
-        android:label="fragment_transaction_list"
+        android:label="Transaction List"
         tools:layout="@layout/fragment_transaction_list">
         <action
             android:id="@+id/action_transactionListFragment_to_transactionDetailsFragment"
@@ -20,17 +20,17 @@
     <fragment
         android:id="@+id/transactionDetailsFragment"
         android:name="cmps312.lab.bankingapp.ui.TransactionDetailsFragment"
-        android:label="fragment_transaction_details"
+        android:label="Transaction Details"
         tools:layout="@layout/fragment_transaction_details" />
     <fragment
         android:id="@+id/accountBalanceFragment"
         android:name="cmps312.lab.bankingapp.ui.AccountBalanceFragment"
-        android:label="fragment_account_balance"
+        android:label="Account Balance"
         tools:layout="@layout/fragment_account_balance" />
     <fragment
         android:id="@+id/transferFragment"
         android:name="cmps312.lab.bankingapp.ui.TransferFragment"
-        android:label="fragment_transfer"
+        android:label="Transfers"
         tools:layout="@layout/fragment_transfer">
         <action
             android:id="@+id/action_transferFragment_to_selectBeneficiaryFragment"
