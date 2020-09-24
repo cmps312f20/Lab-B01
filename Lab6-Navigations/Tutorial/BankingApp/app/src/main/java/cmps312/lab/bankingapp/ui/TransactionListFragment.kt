@@ -22,7 +22,9 @@ class TransactionListFragment : Fragment(R.layout.fragment_transaction_list) {
             findNavController().navigate(action)
         }
 
-        activity?.onBackPressed()
+//        activity?.onBackPressed()
+
+        //ok
 
     }
 }
