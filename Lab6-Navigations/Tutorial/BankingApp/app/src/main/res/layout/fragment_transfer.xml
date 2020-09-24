@@ -37,7 +37,7 @@
         app:layout_constraintEnd_toStartOf="@+id/nextBtn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/amountEt" />
+        app:layout_constraintTop_toBottomOf="@+id/amountEdt" />
 
     <TextView
         android:id="@+id/formTitleTv"
@@ -51,7 +51,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/amountEt"
+        android:id="@+id/amountEdt"
         android:layout_width="250dp"
         android:layout_height="46dp"
         android:layout_marginTop="48dp"
