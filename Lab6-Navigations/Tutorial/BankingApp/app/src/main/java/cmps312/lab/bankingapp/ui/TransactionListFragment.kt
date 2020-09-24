@@ -14,12 +14,15 @@ class TransactionListFragment : Fragment(R.layout.fragment_transaction_list) {
         super.onViewCreated(view, savedInstanceState)
 
         fundTransferBtn.setOnClickListener {
-
+            val action = R.id.action_transactionListFragment_to_transactionDetailsFragment
+            findNavController().navigate(R.id.action_transactionListFragment_to_transferFragment)
         }
         transDetailsBtn.setOnClickListener {
             val action = R.id.action_transactionListFragment_to_transactionDetailsFragment
             findNavController().navigate(action)
         }
+
+        activity?.onBackPressed()
 
     }
 }
