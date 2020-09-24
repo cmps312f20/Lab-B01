@@ -20,6 +20,7 @@ class TransactionListFragment : Fragment(R.layout.fragment_transaction_list) {
         transDetailsBtn.setOnClickListener {
             val action = TransactionListFragmentDirections
                 .actionTransactionListFragmentToTransactionDetailsFragment()
+
             findNavController().navigate(action)
         }
 
