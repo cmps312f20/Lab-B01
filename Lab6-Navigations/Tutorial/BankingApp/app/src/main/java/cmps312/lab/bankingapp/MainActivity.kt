@@ -28,9 +28,7 @@ class MainActivity : AppCompatActivity(), NavController.OnDestinationChangedList
 
         appBarConfiguration = AppBarConfiguration(navController.graph, drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
-
-
-
+        
     }
 
     override fun onResume() {
