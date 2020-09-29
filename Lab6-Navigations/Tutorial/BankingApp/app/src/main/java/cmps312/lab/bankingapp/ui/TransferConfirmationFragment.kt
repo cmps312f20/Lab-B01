@@ -15,5 +15,7 @@ class TransferConfirmationFragment : Fragment(R.layout.fragment_transfer_confirm
         args.transfer.apply {
             fromAccountNoTv.text = fromAccountNo
         }
+
+
     }
 }

@@ -43,7 +43,10 @@
         tools:layout="@layout/fragment_select_beneficiary">
         <action
             android:id="@+id/action_selectBeneficiaryFragment_to_transferConfirmationFragment"
-            app:destination="@id/transferConfirmationFragment" />
+            app:destination="@id/transferConfirmationFragment"
+            app:launchSingleTop="false"
+            app:popUpTo="@id/transferFragment"
+            app:popUpToInclusive="true" />
         <argument
             android:name="transfer"
             app:argType="cmps312.lab.bankingapp.model.Transfer" />
@@ -53,9 +56,6 @@
         android:name="cmps312.lab.bankingapp.ui.TransferConfirmationFragment"
         android:label="fragment_transfer_confirmation"
         tools:layout="@layout/fragment_transfer_confirmation" >
-        <action
-            android:id="@+id/action_transferConfirmationFragment_to_transactionListFragment"
-            app:destination="@id/transactionListFragment" />
         <argument
             android:name="transfer"
             app:argType="cmps312.lab.bankingapp.model.Transfer" />
