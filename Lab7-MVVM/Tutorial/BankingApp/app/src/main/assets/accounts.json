@@ -6,5 +6,9 @@
   {
     "type": "Current",
     "accountNo": "9123-1456-789"
+  },
+  {
+    "type": "Checking",
+    "accountNo": "9123-1456-789"
   }
 ]
