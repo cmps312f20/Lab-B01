@@ -16,10 +16,10 @@ import kotlinx.android.synthetic.main.fragment_transfer_list.*
 class TransferListFragment : Fragment(R.layout.fragment_transfer_list) {
     //we need this shared vew model because during transfer we will update it
     //todo 1. get a refrence of the shared view model
-
+    val transferViewModel : TransferViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val transferViewModel : TransferViewModel by activityViewModels()
+
 
         val transferAdapter = TransferListAdapter(::onTransferSelected)
 
@@ -28,7 +28,7 @@ class TransferListFragment : Fragment(R.layout.fragment_transfer_list) {
             adapter = transferAdapter
         }
 
-//        //todo 2 start observing
+       //todo 2 start observing
         transferViewModel.transfers().observe(viewLifecycleOwner){
             //as soon as the data is populated this method will be called and you will be given it[_transfers]
             transferAdapter.transfers = it
@@ -36,7 +36,7 @@ class TransferListFragment : Fragment(R.layout.fragment_transfer_list) {
     }
 
     private fun onTransferSelected(transfer: Transfer) {
-        //todo
+        transferViewModel.selectedTransfer = transfer
         findNavController().navigate(R.id.toTransferDetails)
     }
 }

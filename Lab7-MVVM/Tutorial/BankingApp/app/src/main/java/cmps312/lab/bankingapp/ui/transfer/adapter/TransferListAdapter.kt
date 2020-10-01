@@ -23,9 +23,11 @@ class TransferListAdapter(private val itemSelectedListener: (Transfer) -> Unit) 
 
     inner class TransferViewHolder(private val binding : ListItemTransferBinding) :
         RecyclerView.ViewHolder(binding.root) {
-
         fun bind(transfer: Transfer) {
             binding.transfer = transfer
+            binding.root.setOnClickListener {
+                itemSelectedListener(transfer)
+            }
         }
     }
 
