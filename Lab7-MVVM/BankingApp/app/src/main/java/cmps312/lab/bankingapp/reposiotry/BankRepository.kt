@@ -8,16 +8,32 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
 object BankRepository {
+    var beneficiaries = listOf<Beneficiary>()
+    var transfers = listOf<Transfer>()
+    var accounts = listOf<Account>()
+
     private fun readData(filename: String, context: Context) = context.assets
         .open(filename)
-        .bufferedReader().use { it.readText() }
+        .bufferedReader().use {
+            it.readText()
+        }
 
-    fun getTransfers(context: Context) =
-        Json.decodeFromString<List<Transfer>>( readData("transfers.json", context) )
+    fun initTransfers(context: Context) {
+        var data = readData("transfers.json", context)
+        transfers = Json { ignoreUnknownKeys = true }
+            .decodeFromString(data)
+    }
 
-    fun getBeneficiaries(context: Context) =
-        Json.decodeFromString<List<Beneficiary>>( readData("beneficiaries.json", context) )
+    fun initBeneficiaries(context: Context) {
+        var data = readData("beneficiaries.json", context)
+        beneficiaries = Json { ignoreUnknownKeys = true }
+            .decodeFromString(data)
+    }
 
-    fun getAccounts(context: Context) =
-        Json.decodeFromString<List<Account>> ( readData("accounts.json", context) )
+    fun initAccounts(context: Context) {
+        var data = readData("accounts.json", context)
+        accounts = Json { ignoreUnknownKeys = true }
+            .decodeFromString(data)
+    }
+
 }

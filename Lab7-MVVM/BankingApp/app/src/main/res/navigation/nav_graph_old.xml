@@ -20,6 +20,11 @@
         android:label="Transaction Details"
         tools:layout="@layout/fragment_transfer_details" />
     <fragment
+        android:id="@+id/accountBalanceFragment"
+        android:name="cmps312.lab.bankingapp.ui.accountbalance.AccountBalanceFragment"
+        android:label="Account Balance"
+        tools:layout="@layout/fragment_account_balance" />
+    <fragment
         android:id="@+id/transferFragment"
         android:name="cmps312.lab.bankingapp.ui.transfer.TransferFragment"
         android:label="Fund Transfer"
@@ -38,6 +43,9 @@
             app:destination="@id/transferConfirmationFragment"
             app:popUpTo="@id/transactionListFragment"
             app:popUpToInclusive="false" />
+        <argument
+            android:name="transfer"
+            app:argType="cmps312.lab.bankingapp.model.Transfer" />
         <action
             android:id="@+id/action_selectBeneficiaryFragment_to_transactionListFragment"
             app:destination="@id/transactionListFragment"
@@ -48,7 +56,10 @@
         android:id="@+id/transferConfirmationFragment"
         android:name="cmps312.lab.bankingapp.ui.transfer.TransferConfirmationFragment"
         android:label="Transfer Confirmation"
-        tools:layout="@layout/fragment_transfer_confirmation">
+        tools:layout="@layout/fragment_transfer_confirmation" >
+        <argument
+            android:name="transfer"
+            app:argType="cmps312.lab.bankingapp.model.Transfer" />
         <action
             android:id="@+id/toHome"
             app:destination="@id/transactionListFragment"

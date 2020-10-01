@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group >
         <item
-            android:id="@+id/transferListFragment"
+            android:id="@+id/transactionListFragment"
             android:icon="@drawable/ic_transactions"
-            android:title="Transfers" />
+            android:title="Transactions" />
         <item
             android:id="@+id/transferFragment"
             android:icon="@drawable/ic_transfer"

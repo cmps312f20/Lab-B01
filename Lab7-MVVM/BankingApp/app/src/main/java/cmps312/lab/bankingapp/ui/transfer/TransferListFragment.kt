@@ -10,23 +10,20 @@ import cmps312.lab.bankingapp.model.Transfer
 import cmps312.lab.bankingapp.ui.transfer.adapter.TransferListAdapter
 import kotlinx.android.synthetic.main.fragment_transfer_list.*
 
+//Todo 2: Rename it to transfer
 class TransferListFragment : Fragment(R.layout.fragment_transfer_list) {
-    //we need this shared vew model because during transfer we will update it
-    //todo
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val transferAdapter : TransferListAdapter
+
+        val transferAdapter: TransferListAdapter
         transactionRV.apply {
             layoutManager = LinearLayoutManager(view.context)
-            transferAdapter = TransferListAdapter(::onTransferSelected)
+            transferAdapter = TransferListAdapter(view.context, ::showDetails)
             adapter = transferAdapter
         }
-
-        //todo
     }
 
-    private fun onTransferSelected(transfer: Transfer) {
-        //todo
-        findNavController().navigate(R.id.toTransferDetails)
+    private fun showDetails(transfer: Transfer) {
+        var action = TransferListFragmentDirections.toTransactionDetails()
+        findNavController().navigate(action)
     }
 }
