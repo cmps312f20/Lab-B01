@@ -3,21 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/transactionListFragment">
+    app:startDestination="@id/transferListFragment">
 
     <fragment
-        android:id="@+id/transactionListFragment"
+        android:id="@+id/transferListFragment"
         android:name="cmps312.lab.bankingapp.ui.transfer.TransferListFragment"
-        android:label="Transactions"
+        android:label="Transfers"
         tools:layout="@layout/fragment_transfer_list">
         <action
-            android:id="@+id/toTransactionDetails"
-            app:destination="@id/transactionDetailsFragment" />
+            android:id="@+id/toTransferDetails"
+            app:destination="@id/transferDetailsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/transactionDetailsFragment"
+        android:id="@+id/transferDetailsFragment"
         android:name="cmps312.lab.bankingapp.ui.transfer.TransferDetailsFragment"
-        android:label="Transaction Details"
+        android:label="Transfer Details"
         tools:layout="@layout/fragment_transfer_details" />
     <fragment
         android:id="@+id/transferFragment"
@@ -36,13 +36,8 @@
         <action
             android:id="@+id/toTransferConfirmation"
             app:destination="@id/transferConfirmationFragment"
-            app:popUpTo="@id/transactionListFragment"
+            app:popUpTo="@id/transferListFragment"
             app:popUpToInclusive="false" />
-        <action
-            android:id="@+id/action_selectBeneficiaryFragment_to_transactionListFragment"
-            app:destination="@id/transactionListFragment"
-            app:popUpTo="@id/transferFragment"
-            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/transferConfirmationFragment"
@@ -51,8 +46,8 @@
         tools:layout="@layout/fragment_transfer_confirmation">
         <action
             android:id="@+id/toHome"
-            app:destination="@id/transactionListFragment"
-            app:popUpTo="@id/transactionListFragment"
+            app:destination="@id/transferListFragment"
+            app:popUpTo="@id/transferListFragment"
             app:popUpToInclusive="true" />
     </fragment>
 </navigation>

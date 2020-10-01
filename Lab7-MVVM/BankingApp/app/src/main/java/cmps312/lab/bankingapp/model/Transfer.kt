@@ -1,14 +1,6 @@
 package cmps312.lab.bankingapp.model
-
-import android.os.Parcelable
-import kotlinx.android.parcel.Parcelize
 import kotlinx.serialization.Serializable
 
 @Serializable
-@Parcelize
-class Transfer() : Parcelable {
-    var fromAccountNo: String? = null
-    var beneficiaryName: String? = null
-    var beneficiaryAccountNo: String? = null
-    var amount: Double = 0.0
-}
+class Transfer(var fromAccountNo: String, var amount: Double,
+               var beneficiaryName: String = "", var beneficiaryAccountNo: String = "")

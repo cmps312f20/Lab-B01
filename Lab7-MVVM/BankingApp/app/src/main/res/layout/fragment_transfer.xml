@@ -7,7 +7,7 @@
     tools:context=".ui.transfer.TransferFragment">
 
     <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/fromAccountNoSP"
+        android:id="@+id/fromAccountSp"
         android:layout_width="357dp"
         android:layout_height="61dp"
         android:layout_marginStart="24dp"
@@ -70,12 +70,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fromAccountNoSP">
+        app:layout_constraintTop_toBottomOf="@+id/fromAccountSp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/amountEt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
     </com.google.android.material.textfield.TextInputLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

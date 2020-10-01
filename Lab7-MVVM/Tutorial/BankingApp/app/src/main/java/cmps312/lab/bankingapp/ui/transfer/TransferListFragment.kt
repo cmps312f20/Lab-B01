@@ -31,8 +31,7 @@ class TransferListFragment : Fragment(R.layout.fragment_transfer_list) {
 //        //todo 2 start observing
         transferViewModel.transfers().observe(viewLifecycleOwner){
             //as soon as the data is populated this method will be called and you will be given it[_transfers]
-//            transferAdapter.transfers = it
-            Toast.makeText(view.context, it.size.toString(), Toast.LENGTH_SHORT).show()
+            transferAdapter.transfers = it
         }
     }
 

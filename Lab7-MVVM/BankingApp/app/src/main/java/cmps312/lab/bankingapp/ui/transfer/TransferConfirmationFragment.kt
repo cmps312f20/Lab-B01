@@ -5,23 +5,18 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import cmps312.lab.bankingapp.R
-import kotlinx.android.synthetic.main.fragment_transfer_confirmation.*
+
 
 class TransferConfirmationFragment : Fragment(R.layout.fragment_transfer_confirmation) {
-
-
+    //once the layout is properly inflated then we can access the view
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var action = TransferConfirmationFragmentDirections.toHome()
 
-        confirmationBtn.setOnClickListener {
-        //  todo call the addTransfer()
-            findNavController().navigate(action)
-        }
+        //todo Obtain an instance of the view binding class.
 
-        cancelBtn.setOnClickListener {
-            findNavController().navigate(action)
-        }
+        //todo Obtain an instance of the ViewModel
 
+
+//
     }
 }

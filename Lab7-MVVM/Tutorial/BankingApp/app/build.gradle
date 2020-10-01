@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-//apply plugin: 'kotlinx-serialization'
+apply plugin: 'kotlinx-serialization'
 
 android {
     compileSdkVersion 30
@@ -31,9 +31,9 @@ android {
         jvmTarget = '1.8'
     }
     //Todo
-//    buildFeatures {
-//        dataBinding true
-//    }
+    buildFeatures {
+        dataBinding true
+    }
 
 }
 
