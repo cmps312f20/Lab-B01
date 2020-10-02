@@ -1,6 +1,7 @@
 package cmps312.lab.bankingapp
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
@@ -26,4 +27,5 @@ class MainActivity : AppCompatActivity() {
 
     // Handle Navigate Up event (triggered when clicking the arrow button on the Top App Bar
     override fun onSupportNavigateUp() =  navController.navigateUp() || super.onSupportNavigateUp()
+
 }

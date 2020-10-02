@@ -29,6 +29,7 @@
         android:layout_width="121dp"
         android:layout_height="63dp"
         android:text="Next"
+        android:onClick="callBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/previousBtn"
