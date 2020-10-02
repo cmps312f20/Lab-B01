@@ -31,9 +31,9 @@ android {
         jvmTarget = '1.8'
     }
     //Todo
-//    buildFeatures {
-//        dataBinding true
-//    }
+    buildFeatures {
+        dataBinding true
+    }
 
 }
 
