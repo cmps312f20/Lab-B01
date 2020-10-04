@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
 
         // Connect the bottomNavBar with the navController to auto-handle OnNavigationItemSelected
         bottomNavBar.setupWithNavController(navController)
-        BankRepository.init(this);
     }
 
     // Handle Navigate Up event (triggered when clicking the arrow button on the Top App Bar

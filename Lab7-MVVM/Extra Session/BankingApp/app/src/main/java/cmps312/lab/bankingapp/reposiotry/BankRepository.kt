@@ -8,7 +8,6 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
 object BankRepository {
-    var context : Context = nullsFirst<Context>();
 
     private fun readData(filename: String, context: Context) = context.assets
         .open(filename)
@@ -23,7 +22,5 @@ object BankRepository {
     fun getAccounts(context: Context) =
         Json.decodeFromString<List<Account>> ( readData("accounts.json", context) )
 
-    private fun initBank(context: Context){
 
-    }
 }
