@@ -1,13 +1,13 @@
 package cmps312.lab.bankingapp
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import cmps312.lab.bankingapp.reposiotry.BankRepository
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -18,14 +18,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         navController = findNavController(R.id.navHostFragment)
-        val appBarConfiguration =  AppBarConfiguration(setOf(R.id.transferListFragment, R.id.transferFragment))
+        val appBarConfiguration =
+            AppBarConfiguration(setOf(R.id.transferListFragment, R.id.transferFragment))
         setupActionBarWithNavController(this, navController, appBarConfiguration)
 
         // Connect the bottomNavBar with the navController to auto-handle OnNavigationItemSelected
         bottomNavBar.setupWithNavController(navController)
+        BankRepository.init(this);
     }
 
     // Handle Navigate Up event (triggered when clicking the arrow button on the Top App Bar
-    override fun onSupportNavigateUp() =  navController.navigateUp() || super.onSupportNavigateUp()
+    override fun onSupportNavigateUp() = navController.navigateUp() || super.onSupportNavigateUp()
 
 }
+
