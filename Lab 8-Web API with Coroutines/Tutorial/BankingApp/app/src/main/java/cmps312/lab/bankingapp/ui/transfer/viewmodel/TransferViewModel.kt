@@ -1,30 +1,30 @@
 package cmps312.lab.bankingapp.ui.transfer.viewmodel
 
 import android.app.Application
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import cmps312.lab.bankingapp.model.Account
+import androidx.lifecycle.*
+import cmps312.lab.bankingapp.data.respository.BankRepository
 import cmps312.lab.bankingapp.model.Transfer
-import cmps312.lab.bankingapp.reposiotry.BankRepository
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+
 
 class TransferViewModel(appContext: Application) : AndroidViewModel(appContext) {
     private val TAG = "TransferViewModel"
 
-    private val bankRepository = BankRepository(appContext)
-
-
-    val _accounts  = MutableLiveData<List<Account>>()
-    val accounts = _accounts
+    //you got all the accounts from the server
+    //todo 1
+    val accounts = liveData {
+        emit(BankRepository.bankService.getAccounts(BankRepository.customerId))
+    }
 
     // Initialize using liveData builder
-    private var _transfers = MutableLiveData<MutableList<Transfer>>()
+    //todo 2
+    private var _transfers = getTransfer() as MutableLiveData
 
     val transfers = _transfers as LiveData<List<Transfer>>
 
-    init {
-        _transfers.postValue(bankRepository.getTransfers() as MutableList<Transfer>?)
-        _accounts.postValue(bankRepository.getAccounts() as MutableList<Account>?)
+    fun getTransfer(cid : Int = BankRepository.customerId) = liveData {
+        emit(BankRepository.bankService.getTransfer(cid))
     }
 
     //when item is selected from TransferListFragment->TransferDetailsFragment
@@ -45,16 +45,24 @@ class TransferViewModel(appContext: Application) : AndroidViewModel(appContext) 
 
     //used by TransferConfirmationFragment
     fun addTransfer(transfer: Transfer = newTransfer) {
-        _transfers.value?.let {
-            it.add(transfer)
-            _transfers.postValue(it)
+
+        viewModelScope.launch {
+            val addedTransfer = async { BankRepository.bankService.addTransfer(BankRepository.customerId, transfer)}
+            _transfers.value?.let {
+                _transfers.value = it + addedTransfer.await()
+            }
         }
     }
 
     fun deleteTransfer(transfer: Transfer) {
-        _transfers.value?.let {
-            it.remove(transfer)
-            _transfers.postValue(it)
+        viewModelScope.launch {
+            val successMessage = async { BankRepository.bankService.deleteTransfer(BankRepository.customerId, transfer.transferId)}
+
+                _transfers.value?.let {
+                    _transfers.value = it -  transfer
+                }
+
+
         }
     }
 }

@@ -4,11 +4,11 @@ package cmps312.lab.bankingapp.data.api
 
 
 import cmps312.lab.bankingapp.model.Account
+import cmps312.lab.bankingapp.model.Beneficiary
 import cmps312.lab.bankingapp.model.Transfer
 import retrofit2.http.*
 
 interface BankService {
-//  BASE_URL =  https://cmps312banking.herokuapp.com/api/
 
     @GET("accounts/{cid}")
     suspend fun getAccounts(@Path("cid") cid : Int) : List<Account>
@@ -17,24 +17,25 @@ interface BankService {
     suspend fun getTransfer(@Path("cid") cid : Int) : List<Transfer>
 
     @POST("transfers/{cid}")
-    fun addTransfer(@Path("cid") cid : Int , @Body transfer: Transfer)
+    suspend fun addTransfer(@Path("cid") cid : Int , @Body transfer: Transfer) : Transfer
 
     @DELETE("transfers/{cid}/{transferId}")
-    fun deleteTransfer(@Path("cid")cid : Int ,
-                       @Path("transferId")transferId : String)
+    suspend fun deleteTransfer(@Path("cid")cid : Int ,
+                       @Path("transferId")transferId : String) : String
 
+    @GET("beneficiaries/{cid}")
+    suspend fun getBeneficiaries(@Path("cid") cid : Int) : List<Beneficiary>
 
+    @POST("beneficiaries/{cid}")
+    suspend fun addBeneficiaries(@Path("cid") cid : Int ,
+                                 @Body beneficiary: Beneficiary) : Beneficiary
 
+    @PUT("beneficiaries/{cid}")
+    suspend fun updateBeneficiaries(@Path("cid") cid : Int ,
+                                    @Body beneficiary: Beneficiary) : String
+
+    @DELETE("beneficiaries/{cid}/{accountNo}")
+    suspend fun deleteBeneficiaries(@Path("cid") cid : Int,
+                                    @Path("accountNo") accountNo : String) : String
 }
-/*
-//GET Accounts	     accounts/:cid	GET
-//GET Transfers	     transfers/:cid	GET
-//ADD Transfers	     transfers/:cid	POST
-//DELETE Transfers	 transfers/:cid/:transferId	DELETE
-GET Beneficiaries	 beneficiaries/:cid	    GET
-ADD Beneficiary	     beneficiaries/:cid	    POST [Required cid in the URL]
-UPDATE Beneficiary	 beneficiaries/:cid	PUT [Requires cid in the URL]
-DELETE Beneficiary	 beneficiaries/:cid/:accounNo	DELETE [Requires cid and accountNo in the URL]
 
-Local Banks	https://cmps312banking.herokuapp.com/api/banks	GET
-*/
