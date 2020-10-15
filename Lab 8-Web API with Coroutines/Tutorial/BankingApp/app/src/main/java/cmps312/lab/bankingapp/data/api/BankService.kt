@@ -33,7 +33,7 @@ interface BankService {
 //DELETE Transfers	 transfers/:cid/:transferId	DELETE
 GET Beneficiaries	 beneficiaries/:cid	    GET
 ADD Beneficiary	     beneficiaries/:cid	    POST [Required cid in the URL]
-UPDATE Beneficiary	 beneficiaries/:cid	POST [Requires cid in the URL]
+UPDATE Beneficiary	 beneficiaries/:cid	PUT [Requires cid in the URL]
 DELETE Beneficiary	 beneficiaries/:cid/:accounNo	DELETE [Requires cid and accountNo in the URL]
 
 Local Banks	https://cmps312banking.herokuapp.com/api/banks	GET
