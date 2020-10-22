@@ -9,6 +9,7 @@ import androidx.navigation.ui.NavigationUI.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import kotlinx.android.synthetic.main.activity_main.*
 
+
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
 
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         // Connect the bottomNavBar with the navController to auto-handle OnNavigationItemSelected
         bottomNavBar.setupWithNavController(navController)
+
     }
 
     // Handle Navigate Up event (triggered when clicking the arrow button on the Top App Bar
