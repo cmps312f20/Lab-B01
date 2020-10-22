@@ -47,3 +47,4 @@
             app:layout_constraintEnd_toStartOf="@+id/deleteBenBtn"
             app:layout_constraintTop_toTopOf="@+id/deleteBenBtn" />
 
+    </androidx.constraintlayout.widget.ConstraintLayout>
