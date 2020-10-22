@@ -9,6 +9,7 @@ import retrofit2.Retrofit
 
 object BeneficiaryRepo {
     val cid = 10001
+
     private val BASE_URL = "https://cmps312banking.herokuapp.com/api/"
     val contentType = "application/json".toMediaType()
     val converterFactory = Json { ignoreUnknownKeys = true }
@@ -25,5 +26,4 @@ object BeneficiaryRepo {
     suspend fun getBeneficiaries() = beneficiaryService.getBeneficiaries(cid)
     suspend fun addBeneficiary(beneficiary: Beneficiary) = beneficiaryService.addBeneficiary(cid, beneficiary)
     suspend fun deleteBeneficiary(accountNo : String) = beneficiaryService.deleteBeneficiary(cid, accountNo)
-
 }
