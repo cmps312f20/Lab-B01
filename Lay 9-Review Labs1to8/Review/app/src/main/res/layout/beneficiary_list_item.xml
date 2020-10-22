@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
 
+    <data>
+
+        <variable
+            name="beneficiary"
+            type="cmps312.lab.exampleappbeneficiaries.model.Beneficiary" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -15,7 +22,7 @@
             android:layout_height="20dp"
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
-            android:text="Ali Omar"
+            android:text="@{beneficiary.name}"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/accountNoTv"
@@ -41,11 +48,11 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
-            android:text="1122-333-44"
+            android:text="@{beneficiary.accountNo}"
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="@+id/deleteBenBtn"
             app:layout_constraintEnd_toStartOf="@+id/deleteBenBtn"
             app:layout_constraintTop_toTopOf="@+id/deleteBenBtn" />
 
-
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
