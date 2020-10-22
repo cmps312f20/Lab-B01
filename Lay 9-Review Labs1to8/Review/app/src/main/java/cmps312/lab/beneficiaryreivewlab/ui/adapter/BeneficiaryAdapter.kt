@@ -8,7 +8,7 @@ import cmps312.lab.beneficiaryreivewlab.R
 import cmps312.lab.beneficiaryreivewlab.databinding.BeneficiaryListItemBinding
 import cmps312.lab.beneficiaryreivewlab.model.Beneficiary
 
-class BeneficiaryAdapter : RecyclerView.Adapter<BeneficiaryAdapter.BeneficiaryViewHolder>() {
+class BeneficiaryAdapter(val deleteBeneficiaryListener : (Beneficiary) -> Unit) : RecyclerView.Adapter<BeneficiaryAdapter.BeneficiaryViewHolder>() {
 
     var beneficiaries = listOf<Beneficiary>()
         set(value) {
@@ -16,10 +16,11 @@ class BeneficiaryAdapter : RecyclerView.Adapter<BeneficiaryAdapter.BeneficiaryVi
             notifyDataSetChanged()
         }
 
-    class BeneficiaryViewHolder(val binding: BeneficiaryListItemBinding) :
+    inner class BeneficiaryViewHolder(val binding: BeneficiaryListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(beneficiary: Beneficiary) {
             binding.beneficiary = beneficiary
+            binding.deleteBenBtn.setOnClickListener {deleteBeneficiaryListener(beneficiary)}
         }
     }
 
