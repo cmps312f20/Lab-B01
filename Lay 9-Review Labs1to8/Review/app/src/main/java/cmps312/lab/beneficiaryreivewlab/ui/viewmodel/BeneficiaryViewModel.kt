@@ -1,11 +1,10 @@
 package cmps312.lab.beneficiaryreivewlab.ui.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
+import androidx.lifecycle.*
 import cmps312.lab.beneficiaryreivewlab.data.repository.BeneficiaryRepo
 import cmps312.lab.beneficiaryreivewlab.model.Beneficiary
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 
 class BeneficiaryViewModel : ViewModel(){
     private val _beneficiaries = getBeneficiariesFromRepo() as MutableLiveData
@@ -17,14 +16,26 @@ class BeneficiaryViewModel : ViewModel(){
     }
 
     fun addBeneficiary(beneficiary: Beneficiary){
-        _beneficiaries.value?.let {
-            _beneficiaries.value = it + beneficiary
+
+        viewModelScope.launch {
+            val addedBeneficiary = async { BeneficiaryRepo.addBeneficiary(beneficiary) }.await()
+
+            _beneficiaries.value?.let {
+                _beneficiaries.value = it + addedBeneficiary
+            }
         }
+
+
     }
 
     fun deleteBeneficiary(beneficiary: Beneficiary){
-        _beneficiaries.value?.let {
-            _beneficiaries.value = it - beneficiary
+        viewModelScope.launch {
+             val successMessage = async { BeneficiaryRepo.deleteBeneficiary(beneficiary.accountNo) }.await()
+
+            _beneficiaries.value?.let {
+                _beneficiaries.value = it - beneficiary
+            }
         }
+
     }
 }
