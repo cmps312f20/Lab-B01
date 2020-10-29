@@ -12,7 +12,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ProjectViewModel(application: Application) : AndroidViewModel(application) {
-
     private val todoListRepo by lazy { TodoListRepo(application) }
     var projects = todoListRepo.getProjects()
 
@@ -21,12 +20,10 @@ class ProjectViewModel(application: Application) : AndroidViewModel(application)
     lateinit var selectedProject : Project
 
     fun getTodos(project: Project){
-        todos = todoListRepo.getTodoListByProject(project.id)
-        Log.d("TAG", "getTodos: $project.id $project.name")
+        todos = todoListRepo.getTodosByProject(project.id)
     }
     fun addTodo(todo: Todo) {
         viewModelScope.launch(Dispatchers.IO) {
-
             todoListRepo.addTodo(todo)
         }
     }
@@ -39,7 +36,7 @@ class ProjectViewModel(application: Application) : AndroidViewModel(application)
 
     fun updateTodo(todo: Todo) {
         viewModelScope.launch(Dispatchers.IO) {
-            todoListRepo.updateToDo(todo)
+            todoListRepo.updateTodo(todo)
         }
     }
     fun addProject(project: Project) {
