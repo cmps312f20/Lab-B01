@@ -23,7 +23,9 @@ class ProjectViewModel(application: Application) : AndroidViewModel(application)
     lateinit var selectedTodo: Todo
     var selectedProject: Project? = null
 
-
+    init {
+        registerProjectListener()
+    }
 
     fun getTodos(projectId: String) {
         _todos.value = listOf<Todo>() //clear the list
@@ -65,8 +67,13 @@ class ProjectViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
+    private fun registerProjectListener(){
+        TodoListRepo.projectsDocumentRef.addSnapshotListener { snapshot, error ->
+           if(error != null) return@addSnapshotListener
 
-
+            _projects.value = snapshot!!.toObjects(Project::class.java)
+        }
+    }
 }
 
 
