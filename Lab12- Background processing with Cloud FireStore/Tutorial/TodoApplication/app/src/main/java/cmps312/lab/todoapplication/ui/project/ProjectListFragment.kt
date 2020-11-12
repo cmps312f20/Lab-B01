@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import cmps312.lab.todoapplication.MainActivity
 import cmps312.lab.todoapplication.R
 import cmps312.lab.todoapplication.model.Project
 import cmps312.lab.todoapplication.ui.project.adapter.ProjectAdapter
@@ -74,8 +75,21 @@ class ProjectListFragment : Fragment(R.layout.fragment_project_list) {
         }
     }
     //todo gallery
+    fun openGallery(){
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent , GALLERY)
+    }
 
-
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == GALLERY){
+            photoUri = data?.data!!
+            val imageView = dialogView?.findViewById<ImageView>(R.id.selectedProjectImg)
+            imageView?.visibility = View.VISIBLE
+            imageView?.setImageURI(photoUri)
+        }
+    }
     private fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val myCustomDialog = activity?.let {
             val builder = AlertDialog.Builder(it)
@@ -88,7 +102,7 @@ class ProjectListFragment : Fragment(R.layout.fragment_project_list) {
             // Pass null as the parent view because its going in the dialog layout
             val selectBtn : Button = view.findViewById<Button>(R.id.chooseImgBtn)
             selectBtn.setOnClickListener {
-//                openGallery()
+                openGallery()
             }
 
             builder.setView(view)

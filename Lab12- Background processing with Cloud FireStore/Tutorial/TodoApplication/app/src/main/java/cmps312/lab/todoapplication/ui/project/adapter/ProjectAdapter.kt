@@ -34,6 +34,7 @@ class ProjectAdapter(val showTodoList: (Project) -> Unit) :
             if (project.imageUrl.length > 10) {
                 binding.projectImg.visibility = View.VISIBLE
                 Glide.with(binding.root.context).load(project.imageUrl).into(binding.projectImg)
+//                Picasso.get().load("http://i.imgur.com/DvpvklR.png").into(imageView);
             }
         }
     }

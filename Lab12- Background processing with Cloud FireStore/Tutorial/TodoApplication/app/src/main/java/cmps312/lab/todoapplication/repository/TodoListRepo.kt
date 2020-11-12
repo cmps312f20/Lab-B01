@@ -69,7 +69,8 @@ object TodoListRepo {
     suspend fun updateToDo(todo: Todo) = todoDocumentsRef.document(todo.id).set(todo).await()
 
     suspend fun getUserProject(userId: String): List<Project>? {
-        val querySnapShot = projectDocumentsRef.whereEqualTo("userId", userId).get().await()
+        val querySnapShot = projectDocumentsRef
+            .whereEqualTo("userId", userId).get().await()
         val projects = mutableListOf<Project>()
         querySnapShot.forEach {
             val project = it.toObject(Project::class.java)
@@ -80,9 +81,13 @@ object TodoListRepo {
     }
 
     //Todo  suspend fun uploadPhoto(photoUri: Uri): String
-    fun uploadPhoto(photoUri: Uri): String {
-
-        return ""
+    suspend fun uploadPhoto(photoUri: Uri): String {
+        val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        val fileName = "IMAGE_" + timestamp + "_.png"
+        val storageRef = FirebaseStorage.getInstance()
+            .reference.child("images").child(fileName)
+        storageRef.putFile(photoUri).await()
+        return storageRef.downloadUrl.await().toString()
     }
 
 }

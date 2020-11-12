@@ -42,7 +42,7 @@ class ProjectViewModel(application: Application) : AndroidViewModel(application)
         viewModelScope.launch(Dispatchers.IO) {
             withContext(Dispatchers.Main) {
                 _todos.value =
-                    cmps312.lab.todoapplication.repository.TodoListRepo.getTodoListByProject(
+                    TodoListRepo.getTodoListByProject(
                         projectId
                     )
             }
@@ -111,7 +111,8 @@ class ProjectViewModel(application: Application) : AndroidViewModel(application)
                     project.id = it.id
 
                     //todo wrap this with project.userId == Firebase.auth.currentUser!!.uid.toString()
-                    updatedProjectDocuments.add(project)
+                    if(project.userId == Firebase.auth.currentUser!!.uid.toString())
+                        updatedProjectDocuments.add(project)
                 }
 
                 _projects.value = updatedProjectDocuments

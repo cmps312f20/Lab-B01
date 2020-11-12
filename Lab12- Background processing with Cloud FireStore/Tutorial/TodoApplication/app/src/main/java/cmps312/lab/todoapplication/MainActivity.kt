@@ -36,10 +36,49 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(this, navController, appBarConfiguration)
 
         //todo create the listner
+        Firebase.auth.addAuthStateListener {
+            if(it.currentUser?.uid == null){
+                showSignIn();
+            }else{
+                projectViewModel.registerListners()
+                val displayName = it.currentUser!!.displayName ?: "Unknown"
+                Toast.makeText(this, "Welcome Mr $displayName", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     //todo create the sign in
+    fun  showSignIn(){
+        //providers for the sign in
 
+        val providers = listOf(
+            AuthUI.IdpConfig.EmailBuilder().build(),
+            AuthUI.IdpConfig.GoogleBuilder().build()
+        )
+
+        val intent = AuthUI.getInstance()
+            .createSignInIntentBuilder()
+            .setAvailableProviders(providers)
+            .setLogo(R.mipmap.ic_launcher)
+            .setIsSmartLockEnabled(false)
+            .build()
+        startActivityForResult(intent, SIGN_IN_CODE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        val response = IdpResponse.fromResultIntent(data)
+        if(requestCode == SIGN_IN_CODE){
+            if(resultCode == Activity.RESULT_OK){
+
+            }else{
+                Toast.makeText(this,
+                    response?.error?.message
+                    , Toast.LENGTH_SHORT).show()
+                showSignIn()
+            }
+        }
+    }
     //override fun onSupportNavigateUp() = navController.navigateUp()
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration)
@@ -55,9 +94,13 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.logoutMI -> {
                 //todo signout the user from the firestore auth
+                Firebase.auth.signOut()
+                projectViewModel.unRegisterListners()
                 Toast.makeText(this, "Signed out", Toast.LENGTH_SHORT).show()
             }
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 }
