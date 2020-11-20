@@ -31,13 +31,14 @@ class AccountViewModel : ViewModel() {
 
 
     fun deleteAccount(account: Account) {
-        viewModelScope.launch {
-            withContext(Dispatchers.Default) {
-                AccountRepository.deleteAccount(account.accountNo)
+        viewModelScope.launch(Dispatchers.IO) {
+            val deleteMessage = AccountRepository.deleteAccount(account.accountNo)
+            withContext(Dispatchers.Main) {
+                _accounts.value?.let {
+                    _accounts.value = it - account
+                }
             }
-            _accounts.value?.let {
-                _accounts.value = it - account
-            }
+
         }
     }
 
@@ -70,8 +71,8 @@ class AccountViewModel : ViewModel() {
     fun getAccounts(acctType: String) {
         viewModelScope.launch {
             _accounts.value = withContext(Dispatchers.Default) {
-                    AccountRepository.getAccounts(acctType)
-                }
+                AccountRepository.getAccounts(acctType)
+            }
         }
     }
 }

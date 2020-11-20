@@ -6,7 +6,7 @@ import cmps312.lab.todoapplication.data.local.TodoListDatabase
 import cmps312.lab.todoapplication.data.local.entity.Project
 import cmps312.lab.todoapplication.data.local.entity.Todo
 
-class TodoListRepo(private val context: Context) {
+class TodoListRepo(private val context: Context) :  {
 
     private val todoListDao by lazy {
         TodoListDatabase.getDatabse(context).todoListDao()

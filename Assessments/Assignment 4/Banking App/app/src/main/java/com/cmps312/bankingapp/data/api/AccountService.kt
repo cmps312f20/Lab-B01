@@ -19,5 +19,4 @@ interface AccountService {
 
     @DELETE("{accountNo}")
     suspend fun deleteAccount(@Path("accountNo") accountNo: String): String
-
 }
